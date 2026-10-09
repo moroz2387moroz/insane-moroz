@@ -19,14 +19,18 @@
 					<div class="header-contacts__phone-number-wrap"><a class="header-contacts__phone-number"
 																	   href="tel:+79216401122">+7 (921) 640-11-22</a>
 					</div>
-					<div class="header-contacts__phone-number-accord"><a class="header-contacts__phone-number"
+					<div class="header-contacts__phone-number-accord" id="header-secondary-phone" aria-hidden="true">
+						<a class="header-contacts__phone-number"
 																		 href="tel:+78126401122">+7 (812) 640-11-22</a>
 						<div class="header-contacts__messagers"><img src="./images/header/viber.svg" alt="viber"> <img
 								src="./images/header/whatsApp.svg" alt="whatsApp">
 							<span class="header-contacts__messagers-descr">Viber / WhatsApp</span>
 						</div><!-- contacts__messagers --></div>
 				</div>
-				<div class="header-contacts__arrow"><img src="./images/header/arrow.svg" alt="arrow"></div>
+				<button class="header-contacts__arrow" type="button" aria-label="Показать второй номер телефона"
+						aria-expanded="false" aria-controls="header-secondary-phone">
+					<img src="./images/header/arrow.svg" alt="" aria-hidden="true">
+				</button>
 			</div><!-- contacts -->
 			<div class="logo">Nova Home</div>
 			<div class="menu">
@@ -2210,5 +2214,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="./dist/main.js" defer></script>
 </body>
 </html>

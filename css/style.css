@@ -467,8 +467,15 @@ template, [hidden] {
     -ms-flex-align: end;
     align-items: flex-end;
     top: 0;
+    visibility: hidden;
+    pointer-events: none;
     -webkit-transition: 0.5s;
     transition: 0.5s;
+}
+
+.header-contacts__phone-number-accord.header-accord-active {
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .header-contacts__phone-number-accord a {
@@ -479,6 +486,9 @@ template, [hidden] {
 
 .header-contacts__arrow {
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: transparent;
     -webkit-transition: 0.5s;
     transition: 0.5s;
 }
