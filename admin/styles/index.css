@@ -371,6 +371,21 @@ body {
 
 .text-warning{
     color: tomato;
+    display: none;
+}
+
+.label.has-error .text-warning {
+    display: block;
+}
+
+.auth-status {
+    display: none;
+    color: tomato;
+    text-align: center;
+}
+
+.auth-status.is-visible {
+    display: block;
 }
 
 .label sup {

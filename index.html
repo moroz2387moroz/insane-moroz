@@ -37,7 +37,11 @@
 				<div class="menu-phone-icon">
 					<a href="tel:+79216401122"><img src="./images/header/phoneIcon.svg" alt="phoneIcon"></a>
 				</div>
-				<span class="menu__title">Меню </span><img class="menu__icon" src="./images/header/menuIcon.svg" alt="menuIcon">
+				<button class="menu__toggle" type="button" aria-label="Открыть меню"
+						aria-expanded="false" aria-controls="popup-menu">
+					<span class="menu__title">Меню </span>
+					<img class="menu__icon" src="./images/header/menuIcon.svg" alt="" aria-hidden="true">
+				</button>
 			</div><!-- menu --></header><!-- header -->
 		<div class="wrapper_middle">
 			<div class="main-title">
@@ -169,7 +173,7 @@
 									   placeholder="Введите номер телефона" id="feedback-input1"
 									   minlength="18"></div>
 							<button class="button">Перезвоните мне</button>
-							<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox1"> <label
+							<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox1" name="consent" value="true"> <label
 									class="checkbox__label" for="checkbox1"></label>
 								<div class="checkbox__descr checkbox__descr_round-feedback">Я соглашаюсь с
 									<span class="link-privacy">политикой конфиденциальности</span>
@@ -399,7 +403,7 @@
 					<div class="slider-counter slider-counter-repair slider-counter-responsive" id="repair-counter">
 						<div class="slider-counter-content">
 							<div class="slider-counter-content__current">1</div>
-							<div class="slider-counter-content__total">3</div>
+							<div class="slider-counter-content__total">5</div>
 						</div>
 					</div>
 					<div class="slider-arrow slider-arrow_left" id="repair-types-arrow_left">
@@ -418,7 +422,7 @@
 									fill="#322823"></path>
 						</svg>
 					</div>
-					<div class="link-list link-list-repair desktop-hide"><a>Полный список услуг и цен
+					<div class="link-list link-list-repair desktop-hide"><a class="js-open-repair-types" href="#popup-repair-types">Полный список услуг и цен
 						<svg width="17" height="16" fill="none" viewBox="0 0 17 16" preserveAspectRatio="xMinYMin meet">
 							<path
 									d="M16.207 8.707a1 1 0 0 0 0-1.414L9.843.929A1 1 0 1 0 8.43 2.343L14.086 8l-5.657 5.657a1 1 0 1 0 1.414 1.414l6.364-6.364zM0 9h15.5V7H0v2z"
@@ -485,7 +489,7 @@
 							</svg>
 						</div>
 					</div><!-- /.repair-types__nav-wrap -->
-					<div class="link-list link-list-repair mobile-hide tablet-hide"><a>Полный список услуг и цен
+					<div class="link-list link-list-repair mobile-hide tablet-hide"><a class="js-open-repair-types" href="#popup-repair-types">Полный список услуг и цен
 						<div>
 							<svg width="17" height="16" fill="none" viewBox="0 0 18 12" preserveAspectRatio="xMinYMin meet">
 								<path
@@ -518,8 +522,7 @@
 																									  minlength="18"></label>
 				<button class="button button-feedback-block">Перезвоните мне</button>
 				<div class="checkbox checkbox-feedback-block">
-					<input class="checkbox__input" type="checkbox" id="checkbox2"
-						   required=""> <label class="checkbox__label"
+					<input class="checkbox__input" type="checkbox" id="checkbox2" name="consent" value="true"> <label class="checkbox__label"
 											   for="checkbox2"></label>
 					<div class="checkbox__descr">Нажимая на кнопку, Вы даете согласие на
 						<span class="link-privacy">обработку своих персональных данных</span>
@@ -790,7 +793,7 @@
 															placeholder="Введите номер телефона" id="feedback-input3" minlength="18">
 						</div>
 						<button class="button">Перезвоните мне</button>
-						<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox3"> <label
+						<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox3" name="consent" value="true"> <label
 								class="checkbox__label" for="checkbox3"></label>
 							<div class="checkbox__descr checkbox__descr_round-feedback">Я соглашаюсь с
 								<span class="link-privacy">политикой конфиденциальности</span>
@@ -943,8 +946,7 @@
 																									  minlength="18"></label>
 				<button class="button button-feedback-block">Перезвоните мне</button>
 				<div class="checkbox checkbox-feedback-block">
-					<input class="checkbox__input" type="checkbox" id="checkbox4"
-						   required=""> <label class="checkbox__label"
+					<input class="checkbox__input" type="checkbox" id="checkbox4" name="consent" value="true"> <label class="checkbox__label"
 											   for="checkbox4"></label>
 					<div class="checkbox__descr">Нажимая на кнопку, Вы даете согласие на
 						<span class="link-privacy">обработку своих персональных данных</span>
@@ -1142,8 +1144,7 @@
 																									  minlength="18"></label>
 				<button class="button button-feedback-block">Перезвоните мне</button>
 				<div class="checkbox checkbox-feedback-block">
-					<input class="checkbox__input" type="checkbox" id="checkbox5"
-						   required=""> <label class="checkbox__label"
+					<input class="checkbox__input" type="checkbox" id="checkbox5" name="consent" value="true"> <label class="checkbox__label"
 											   for="checkbox5"></label>
 					<div class="checkbox__descr">Нажимая на кнопку, Вы даете согласие на
 						<span class="link-privacy">обработку своих персональных данных</span>
@@ -1184,12 +1185,12 @@
 						<div class="copyright__title">Все права защищены © 2021.</div>
 						<div class="copyright__subtitle link-privacy">Политика конфиденциальности</div>
 					</div>
-					<button class="button-footer"><a href="#main">Вверх</a></button>
+					<a class="button-footer" href="#main">Вверх</a>
 				</div>
 			</div>
 		</div>
 	</div><!-- /footer -->
-	<div class="popup popup-menu">
+	<div class="popup popup-menu" id="popup-menu" aria-hidden="true">
 		<div class="popup-dialog-menu">
 			<div class="close close-menu">
 				<svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
@@ -1217,7 +1218,7 @@
 
 						<div class="popup-menu-nav__item"><a class="menu-link" href="#faq">часто задаваемые вопросы</a>
 						</div>
-						<div class="link-list link-list-menu mobile-hide"><a class="menu-link no-overflow" href="#">
+						<div class="link-list link-list-menu mobile-hide"><a class="menu-link no-overflow js-open-repair-types" href="#popup-repair-types">
 							<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
 								<path
 										d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
@@ -1228,7 +1229,7 @@
 				</div>
 				<div class="popup-menu-copyright">Все права защищены © 2021. Политика конфиденциальности</div>
 			</div>
-			<div class="link-list link-list-menu tablet-hide desktop-hide"><a class="menu-link no-overflow" href="#">
+			<div class="link-list link-list-menu tablet-hide desktop-hide"><a class="menu-link no-overflow js-open-repair-types" href="#popup-repair-types">
 				<svg width="17" height="16" fill="none" viewBox="0 0 17 16" xmlns="http://www.w3.org/2000/svg">
 					<path
 							d="M.293 8.707a1 1 0 0 1 0-1.414L6.657.929A1 1 0 0 1 8.07 2.343L2.414 8l5.657 5.657a1 1 0 1 1-1.414 1.414L.293 8.707zM16.5 9H1V7h15.5v2z"
@@ -1260,7 +1261,7 @@
 													placeholder="Введите номер телефона" id="feedback-input6" minlength="18">
 				</div>
 				<button class="button button-consultation">Перезвоните мне</button>
-				<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox6"> <label
+				<div class="checkbox"><input class="checkbox__input" type="checkbox" id="checkbox6" name="consent" value="true"> <label
 						class="checkbox__label checkbox__label-consultation" for="checkbox6"></label>
 					<div class="checkbox__descr checkbox__descr_round-feedback">Я соглашаюсь с
 						<span class="link-privacy">политикой конфиденциальности</span>
@@ -1287,7 +1288,7 @@
 				<div class="popup-thank__logo">Nova Home</div>
 			</div>
 		</div><!-- /feedback --></div>
-	<div class="popup popup-repair-types">
+	<div class="popup popup-repair-types" id="popup-repair-types" role="dialog" aria-modal="true" aria-hidden="true">
 		<div class="close mobile-hide">
 			<svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M21.673.327a1.118 1.118 0 0 0-1.581 0L11 9.42 1.909.327A1.118 1.118 0 0 0 .327 1.91L9.42 11 .327 20.091a1.118 1.118 0 1 0 1.582 1.581L11 12.582l9.091 9.09a1.118 1.118 0 1 0 1.581-1.58L12.582 11l9.09-9.091a1.118 1.118 0 0 0 0-1.582z"
@@ -2156,7 +2157,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="popup popup-privacy">
+	<div class="popup popup-privacy" id="popup-privacy" role="dialog" aria-modal="true" aria-hidden="true">
 		<div class="close mobile-hide">
 			<svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
 				<path fill-rule="evenodd" clip-rule="evenodd"

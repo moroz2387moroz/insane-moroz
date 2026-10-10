@@ -1,16 +1,27 @@
-document.addEventListener("click", (event) => {
-    const arrow = event.target.closest(".header-contacts__arrow");
+import openContacts from "./modules/openContacts.js";
+import openMenu from "./modules/openMenu.js";
+import modal from "./modules/modal.js";
+import validateForms from "./modules/validateForms.js";
+import sendForm from "./modules/sendForm.js";
+import tooltip from "./modules/tooltip.js";
+import formulaSlider from "./modules/formulaSlider.js";
+import repairType from "./modules/repairType.js";
+import portfolio from "./modules/portfolio.js";
+import docs from "./modules/docs.js";
+import feedback from "./modules/feedback.js";
+import accordion from "./modules/accordion.js";
+import repairTypesData from "./modules/repairTypesData.js";
 
-    if (!arrow) {
-        return;
-    }
-
-    const contacts = arrow.closest(".header-contacts");
-    const phoneAccordion = contacts.querySelector(".header-contacts__phone-number-accord");
-    const isExpanded = arrow.getAttribute("aria-expanded") === "true";
-
-    arrow.setAttribute("aria-expanded", String(!isExpanded));
-    arrow.classList.toggle("header-accord-arrow-active", !isExpanded);
-    phoneAccordion.classList.toggle("header-accord-active", !isExpanded);
-    phoneAccordion.setAttribute("aria-hidden", String(isExpanded));
-});
+openContacts();
+openMenu();
+modal();
+validateForms();
+sendForm();
+tooltip();
+formulaSlider();
+repairType();
+portfolio();
+docs();
+feedback();
+accordion();
+repairTypesData();
