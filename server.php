@@ -54,6 +54,29 @@ if (!is_string($form) || !preg_match('/^[a-zA-Z0-9_-]{1,40}$/D', $form)) {
     $form = 'website';
 }
 
+$extraDetails = [];
+foreach ($data as $key => $value) {
+    if (in_array($key, ['form', 'name', 'phone', 'consent'], true)) {
+        continue;
+    }
+
+    if (
+        !is_string($key)
+        || !preg_match('/^[a-zA-Z][a-zA-Z0-9_-]{0,39}$/D', $key)
+        || !is_scalar($value)
+    ) {
+        respond(422, ['message' => 'Проверьте дополнительные данные формы и попробуйте ещё раз.']);
+    }
+
+    $detail = trim((string) $value);
+    if (strlen($detail) > 500 || preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', $detail)) {
+        respond(422, ['message' => 'Проверьте дополнительные данные формы и попробуйте ещё раз.']);
+    }
+
+    $detail = preg_replace('/[\r\n\t ]+/u', ' ', $detail);
+    $extraDetails[] = "{$key}: {$detail}";
+}
+
 $recipient = getenv('CONTACT_EMAIL') ?: 'moroz2387moroz@yandex.ru';
 if (!is_string($recipient) || filter_var($recipient, FILTER_VALIDATE_EMAIL) === false) {
     respond(500, ['message' => 'Отправка заявок временно недоступна. Свяжитесь с нами по телефону.']);
@@ -64,7 +87,8 @@ $body = "Новая заявка с сайта\n\n"
     . "Форма: {$form}\n"
     . ($name !== '' ? "Имя: {$name}\n" : '')
     . "Телефон: {$phone}\n"
-    . "Согласие на обработку персональных данных: да\n";
+    . "Согласие на обработку персональных данных: да\n"
+    . ($extraDetails ? "Дополнительные данные:\n" . implode("\n", $extraDetails) . "\n" : '');
 $headers = [
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',

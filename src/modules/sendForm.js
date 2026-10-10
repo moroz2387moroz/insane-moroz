@@ -1,4 +1,6 @@
-const sendForm = () => {
+const sendForm = (formConfigs) => {
+    const forms = new Map(formConfigs.map(({ formId, elems = [] }) => [formId, elems]));
+
     const getStatus = (form) => {
         let status = form.nextElementSibling;
 
@@ -15,7 +17,11 @@ const sendForm = () => {
     document.addEventListener("submit", async (event) => {
         const form = event.target;
 
-        if (!(form instanceof HTMLFormElement) || event.defaultPrevented) {
+        if (
+            !(form instanceof HTMLFormElement) ||
+            !forms.has(form.id) ||
+            event.defaultPrevented
+        ) {
             return;
         }
 
@@ -39,6 +45,17 @@ const sendForm = () => {
         });
 
         try {
+            forms.get(form.id).forEach(({ type, id }) => {
+                const element = document.getElementById(id);
+                if (type === "block") {
+                    data[id] = element.textContent.trim();
+                } else if (type === "input") {
+                    data[id] = element.value;
+                } else {
+                    throw new Error(`Неподдерживаемый тип дополнительного поля: ${type}`);
+                }
+            });
+
             const response = await fetch(form.dataset.endpoint || "./server.php", {
                 method: "POST",
                 headers: {

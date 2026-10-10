@@ -16,7 +16,14 @@ openContacts();
 openMenu();
 modal();
 validateForms();
-sendForm();
+sendForm([
+    { formId: "feedback1" },
+    { formId: "feedback2" },
+    { formId: "feedback3" },
+    { formId: "feedback4" },
+    { formId: "feedback5" },
+    { formId: "feedback6" },
+]);
 tooltip();
 formulaSlider();
 repairType();
